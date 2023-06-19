@@ -1,7 +1,7 @@
 <?php
 
 namespace App\DataFixtures;
-
+use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -153,6 +153,17 @@ class AppFixtures extends Fixture
             ],
         ];
 
+             foreach($products as $item){
+                $Product= new Product();
+                $Product ->setName($item['name']);
+                $Product ->setPrice($item['price']);
+                $Product ->setShortDescription($item['short_description']);
+                $Product ->setLongDescription($item['short_description']);
+                $Product ->setImage($item['image']);
+                $manager->persist($Product);
+             }
+
+           
         // $product = new Product();
         // $manager->persist($product);
 
